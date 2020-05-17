@@ -1,0 +1,33 @@
+body {
+	font-family: sans-serif;
+}
+
+html,
+.fullscreen {
+	height: 100%;
+	margin: 0;
+	padding: 10%;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.container {
+	margin: auto;
+	text-align: center;
+}
+
+.title {
+	font-size: 3rem;
+}
+
+.table {
+	margin: auto;
+	width: 100%;
+	border: 1px solid black;
+}
+
+.searchbox {
+	margin: auto;
+	width: 100%;
+	box-sizing: border-box;
+}

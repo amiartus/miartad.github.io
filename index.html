@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>timetrack</title>
+	<link rel="manifest" href="/manifest.json">
+	<link rel="stylesheet" href="css/style.css">
+	<meta name="theme-color" content="white"/>
+</head>
+
+<body class="fullscreen">
+	<div class="container">
+		<table id="id-table-search" class="table">
+			<caption>current task</caption>
+			<tbody>
+				<tr>
+					<td class="task_name">
+						<input id="task-name" class="searchbox" type='text'/>
+					</td>
+				</tr>
+				<tr>
+					<td class="tast desc">
+						<input id="task-description" class="searchbox" type='text'/>
+					</td>
+				</tr>
+				<tr>
+					<td id="search-active" class="task_time">
+						<input id="task-update" class="searchbox" type='button' value="a"/>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="container">
+		<table id="id-table-history"  class="table">
+			<caption>overview</caption>
+		</table>
+	</div>
+
+	<script src="js/main.js"></script>
+</body>
+</html>
