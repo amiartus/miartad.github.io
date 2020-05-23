@@ -307,17 +307,23 @@ async function update_task_ui(task_name)
 	}
 }
 
-async function update_history_ui()
+// display entries for displayed_day
+async function update_history_ui(displayed_date)
 {
 	let table = document.getElementById("id-table-history");
 	table.innerHTML = "";
 
-	let day_start = new Date();
-	day_start.setHours(0);
-	day_start.setMinutes(0);
-	day_start.setSeconds(0);
+	if (displayed_date == undefined) {
+		displayed_date = new Date();
+	}
 
-	let results = await db_foreach(table_history, key_start, IDBKeyRange.lowerBound(day_start.getTime(), true));
+	displayed_date.setHours(0);
+	displayed_date.setMinutes(0);
+	displayed_date.setSeconds(0);
+
+	document.getElementById("go-date").innerHTML = displayed_date.toLocaleDateString('en-US');
+
+	let results = await db_foreach(table_history, key_start, IDBKeyRange.lowerBound(displayed_date.getTime(), true));
 
 	let fields = [key_name, key_start, key_duration];
 
@@ -370,6 +376,10 @@ document.getElementById("task-name").addEventListener("input", function(ev) {
 document.getElementById("task-name").addEventListener("focusout", function(ev) {
 	if (ev.target.value == "")
 		update_task_ui()
+});
+
+document.getElementById("go-date").addEventListener("click", function(ev) {
+	update_history_ui()
 });
 
 document.getElementById("dummy-test").addEventListener("click", function(ev) {
