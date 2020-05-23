@@ -316,9 +316,12 @@ async function update_task_ui(task_name)
 	if (task != undefined && task[key_name] == task_name) {
 		button.addEventListener("click", on_task_stop);
 		button.value = "stop";
+		button.classList.add("btn-danger");
 	} else {
 		button.addEventListener("click", on_task_start)
 		button.value = "resume";
+		button.classList.remove("btn-danger");
+		button.classList.add("btn-warning");
 	}
 }
 
