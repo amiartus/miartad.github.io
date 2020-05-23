@@ -321,9 +321,15 @@ async function update_history_ui(displayed_date)
 	displayed_date.setMinutes(0);
 	displayed_date.setSeconds(0);
 
-	document.getElementById("go-date").innerHTML = displayed_date.toLocaleDateString('en-US');
+	let end_date = new Date()
+	end_date.setTime(displayed_date.getTime())
+	end_date.setHours(23)
+	end_date.setMinutes(59)
+	end_date.setSeconds(59)
 
-	let results = await db_foreach(table_history, key_start, IDBKeyRange.lowerBound(displayed_date.getTime(), true));
+	ui_set_displayed_date(displayed_date)
+
+	let results = await db_foreach(table_history, key_start, IDBKeyRange.bound(displayed_date.getTime(), end_date.getTime(), true, false));
 
 	let fields = [key_name, key_start, key_duration];
 
@@ -358,6 +364,14 @@ async function update_history_ui(displayed_date)
 	});
 }
 
+function ui_displayed_date() {
+	return new Date(document.getElementById("go-date").innerHTML)
+}
+
+function ui_set_displayed_date(date) {
+	document.getElementById("go-date").innerHTML = date.toLocaleDateString('en-US')
+}
+
 async function update_progress_ui()
 {
 	let running = await db_get(table_running, 1);
@@ -376,6 +390,18 @@ document.getElementById("task-name").addEventListener("input", function(ev) {
 document.getElementById("task-name").addEventListener("focusout", function(ev) {
 	if (ev.target.value == "")
 		update_task_ui()
+});
+
+document.getElementById("go-prev").addEventListener("click", function(ev) {
+	let date = ui_displayed_date()
+	date.setDate(date.getDate() - 1)
+	update_history_ui(date)
+});
+
+document.getElementById("go-next").addEventListener("click", function(ev) {
+	let date = ui_displayed_date()
+	date.setDate(date.getDate() + 1)
+	update_history_ui(date)
 });
 
 document.getElementById("go-date").addEventListener("click", function(ev) {
