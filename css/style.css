@@ -11,6 +11,20 @@ html,
 	box-sizing: border-box;
 }
 
+input[type="text"] {
+	display: block;
+	width: 100%;
+	padding: 18px;
+	margin-bottom: 10px;
+	box-sizing: border-box;
+}
+
+input[type="button"] {
+	width: 12.5rem;
+	height: 2.75rem;
+	margin-bottom: 1em;
+}
+
 .container {
 	margin: auto;
 	text-align: center;
@@ -24,6 +38,10 @@ html,
 	margin: auto;
 	width: 100%;
 	border: 1px solid black;
+}
+
+.table tr:nth-child(2n) {
+	background-color: #f5f5f5;
 }
 
 .searchbox {
