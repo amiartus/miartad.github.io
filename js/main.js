@@ -1,4 +1,5 @@
 import * as time from '/js/time.js'
+import * as pbar from '/js/progress-bar.js'
 
 window.onload = async function() {
 	if ('serviceWorker' in navigator) {

@@ -1,5 +1,3 @@
-const PROGRESS_BAR_ID = "progress-bar"
-
 function getTasksWithPortions(allTasks) {
 	const allTasksCopy = JSON.parse(JSON.stringify(allTasks))
 	const tasksWithPortions = allTasksCopy.map(appendPortionToTask)
@@ -14,14 +12,14 @@ function appendPortionToTask(task) {
 	return task
 }
 
-function renderPortionsInProgressBar(tasksWithPortions) {
-	const bar = document.getElementById(PROGRESS_BAR_ID)
+function renderPortionsInProgressElement(element_id, tasksWithPortions) {
+	const element = document.getElementById(element_id)
 
 	//may have child elements from previous progress-bar render, have to empty first
-	bar.innerHTML = ""
+	element.innerHTML = ""
 
 	tasksWithPortions.forEach(function (taskObj) {
-		bar.append(createElementWithWidth(taskObj))
+		element.append(createElementWithWidth(taskObj))
 	})
 }
 
@@ -35,7 +33,7 @@ function createElementWithWidth(task) {
 	return el
 }
 
-function runTest() {
+export function runTest(element_id) {
 	const a = Math.random()
 	const b = Math.random()
 
@@ -48,10 +46,11 @@ function runTest() {
 		{ start: max, stop: 1, color: "#26af61" },
 	]
 
-	render(dummyData)
+	render(element_id, dummyData)
 }
 
-export function render(tasks) {
+export function render(element_id, tasks) {
 	const atom = getTasksWithPortions(tasks)
-	renderPortionsInProgressBar(atom)
+	renderPortionsInProgressElement(element_id, atom)
 }
+
