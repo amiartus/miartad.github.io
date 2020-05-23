@@ -45,8 +45,8 @@ export function convertMS(milliseconds) {
 	};
 }
 
-export function toDuration(msec) {
-	var sec_num = parseInt(msec, 10); // don't forget the second param
+export function toDuration(sec) {
+	var sec_num = parseInt(sec, 10); // don't forget the second param
 	var hours   = Math.floor(sec_num / 3600);
 	var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
 	var seconds = sec_num - (hours * 3600) - (minutes * 60);
