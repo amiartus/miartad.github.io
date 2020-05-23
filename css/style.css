@@ -69,24 +69,19 @@ input[type="button"] {
 	padding: 5px 15px;
 }
 .table td {
-	border-width: 3px 0;
 	width: 50%;
-	border-color: black;
-	border-style: solid;
 	background-color: white;
 	color:black;
 	padding: 5px 15px;
-	box-shadow: 10px 10px 5px lightgrey;
+	box-shadow: 5px 5px 5px lightgrey;
 }
 .table td:first-child {
-	border-left-width: 3px;
 	border-radius: 25px 0 0 25px;
-	box-shadow: 10px 10px 5px lightgrey;
+	box-shadow: 5px 5px 5px lightgrey;
 }
 .table td:last-child {
-	border-right-width: 3px;
 	border-radius: 0 25px 25px 0;
-	box-shadow: 10px 10px 5px lightgrey;
+	box-shadow: 5px 5px 5px lightgrey;
 }
 .table thead {
 	display: table;
@@ -120,4 +115,11 @@ input[type="button"] {
 
 .portion:after {
 	content: "";
+}
+
+
+#task-update {
+  display: block;
+  width: 100%;
+
 }
