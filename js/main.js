@@ -332,7 +332,7 @@ async function update_history_ui()
 			if (field == key_start)
 				val = new Date(val).toTimeString().split(" ")[0];
 
-			if (field == key_duration) {			
+			if (field == key_duration) {
 				let ms = val;
 				let s = Math.floor(ms / 1000);
 				let m = Math.floor(s / 60);
@@ -340,7 +340,7 @@ async function update_history_ui()
 				let dur = [
 					h % 60,
 					m % 60,
-					s % 60					
+					s % 60
 				];
 				val = dur[0].toString() + "h " +
 					dur[1].toString() + "m " +
