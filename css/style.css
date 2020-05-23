@@ -101,16 +101,20 @@ input[type="button"] {
 	box-sizing: border-box;
 }
 
-.progress-bar {
+.pb{
+  position: relative;
 	width: 100%;
 	height: 50px;
 	border: 1px solid #ccc;
 	margin-bottom: 1em;
-	background-color: #ccc;
+  background-color: #ccc;
+  box-sizing: content-box;
 }
 
 .portion {
 	display: inline-block;
+  position: absolute;
+  height: 50px;
 }
 
 .portion:after {
@@ -121,5 +125,4 @@ input[type="button"] {
 #task-update {
   display: block;
   width: 100%;
-
 }
