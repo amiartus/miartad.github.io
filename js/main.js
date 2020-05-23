@@ -34,6 +34,21 @@ window.onload = async function() {
 	}
 }
 
+// https://coolors.co
+
+var colors = [
+	"#a4e7fcff",
+	"#c1179aff",
+	"#774839ff",
+	"#722460ff",
+	"#f7af99ff",
+	"#7b9317ff",
+	"#c2db60ff",
+	"#34c8edff",
+	"#36a1bcff",
+	"#c2ef0bff"
+]
+
 var db_name = "database";
 
 // tasks: name | description
@@ -333,6 +348,7 @@ async function update_history_ui(displayed_date)
 
 	let fields = [key_name, key_start, key_duration];
 
+	let pbar_tasks = []
 	let total = 0
 
 	results.forEach(element => {
@@ -353,7 +369,22 @@ async function update_history_ui(displayed_date)
 
 			c.innerHTML = val;
 		});
+
+		let day_seconds = 24 * 3600
+		let s = new Date(element[key_start])
+		let d_msecs = element[key_duration]
+
+		let sec_start = ((s.getHours() * 60) + s.getMinutes()) * 60 + s.getSeconds()
+		let sec_finish = sec_start + d_msecs / 1000
+
+		pbar_tasks.push({
+			start: sec_start / day_seconds,
+			stop: sec_finish / day_seconds,
+			color: colors[(table.rows.length - 1) % colors.length]
+		})
 	});
+
+	pbar.render("progress-bar", pbar_tasks)
 
 	let total_row = table.insertRow(table.rows.length)
 	total_row.insertCell(total_row.cells.length)
