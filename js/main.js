@@ -371,3 +371,7 @@ document.getElementById("task-name").addEventListener("focusout", function(ev) {
 	if (ev.target.value == "")
 		update_task_ui()
 });
+
+document.getElementById("dummy-test").addEventListener("click", function(ev) {
+	pbar.runTest("progress-bar")
+});
