@@ -333,6 +333,8 @@ async function update_history_ui(displayed_date)
 
 	let fields = [key_name, key_start, key_duration];
 
+	let total = 0
+
 	results.forEach(element => {
 		let row = table.insertRow(table.rows.length);
 
@@ -345,12 +347,18 @@ async function update_history_ui(displayed_date)
 				val = new Date(val).toTimeString().split(" ")[0];
 
 			if (field == key_duration) {
+				total += val
 				val = time.toDuration(val / 1000)
 			}
-			
+
 			c.innerHTML = val;
 		});
 	});
+
+	let total_row = table.insertRow(table.rows.length)
+	total_row.insertCell(total_row.cells.length)
+	total_row.insertCell(total_row.cells.length).innerHTML = "total"
+	total_row.insertCell(total_row.cells.length).innerHTML = time.toDuration(total / 1000)
 }
 
 function ui_displayed_date() {
