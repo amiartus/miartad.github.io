@@ -247,9 +247,10 @@ async function on_task_start()
 	// start a task
 	let task_name = document.getElementById("task-name").value;
 	if (task_name != undefined) {
+		let button = document.getElementById("task-update");
 		// check if task already exists
 		let task = await db_get(table_tasks, task_name);
-
+		button.classList.remove("disabled");
 		// if not create it
 		if (task == undefined) {
 			let task_description = document.getElementById("task-description").value;
@@ -296,6 +297,7 @@ async function update_task_ui(task_name)
 	// if task is not specified grey out button
 	if (task_name == undefined || task_name == "") {
 		button.value = "";
+		button.classList.add("disabled");
 		document.getElementById("task-description").value = "";
 		return;
 	}
@@ -303,8 +305,10 @@ async function update_task_ui(task_name)
 	// if task does not exists allow start
 	let task = await db_get(table_tasks, task_name);
 	if (task == undefined) {
-		button.addEventListener("click", on_task_start)
+		button.addEventListener("click", on_task_start);
 		button.value = "start";
+		button.classList.remove("disabled");
+		button.classList.remove("btn-warning");
 		return;
 	}
 
