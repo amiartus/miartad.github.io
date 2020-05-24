@@ -26,8 +26,8 @@ function renderPortionsInProgressElement(element_id, tasksWithPortions) {
 function createElementWithWidth(task) {
 	const el = document.createElement("div")
 	el.className = "portion"
+	el.style.left = task.start * 100 + '%'
 	el.style.width = task.portion + "%" || 0
-	el.style.height = "50px"
 	el.style.backgroundColor = task.color
 
 	return el
