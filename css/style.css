@@ -40,12 +40,13 @@ input[type="button"] {
 
 .title {
 	font-size: 3rem;
-	font-family: 'Lobster', cursive;
 }
 
 .table {
 	margin: auto;
 	width: 100%;
+	box-shadow: 0 0 .5rem rgba(0,0,0,.15) !important;
+	padding: 7px;
 }
 
 .table tr:nth-child(2n) {
@@ -62,7 +63,8 @@ input[type="button"] {
 }
 .table tr
 {
-	border-radius: 25px;
+	border-radius: 10px;
+	box-shadow: 0 0 .5rem rgba(0,0,0,.15) !important;
 }
 .table th {
 	text-align: left;
@@ -73,15 +75,14 @@ input[type="button"] {
 	background-color: white;
 	color:black;
 	padding: 5px 15px;
-	box-shadow: 5px 5px 5px lightgrey;
 }
 .table td:first-child {
-	border-radius: 25px 0 0 25px;
-	box-shadow: 5px 5px 5px lightgrey;
+	border-radius: 10px 0 0 10px;
+	box-shadow: 0 0 .5rem rgba(0,0,0,.15) !important;
+	border-left-color: red;
 }
 .table td:last-child {
-	border-radius: 0 25px 25px 0;
-	box-shadow: 5px 5px 5px lightgrey;
+	border-radius: 0 10px 10px 0;
 }
 .table thead {
 	display: table;
@@ -92,7 +93,7 @@ input[type="button"] {
 	display: table;
 	table-layout: fixed;
 	width: 100%;
-	border-spacing: 0 30px;
+	border-spacing: 0 10px;
 }
 
 .searchbox {
