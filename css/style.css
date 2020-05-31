@@ -131,3 +131,26 @@ input[type="button"] {
   width: 100%;
 
 }
+
+
+.sash tr td{
+  position: relative;
+  overflow: hidden;
+  width: 200px;
+  height: 100px;
+  
+}
+.sash tr td:last-child:after {
+  content: "\2606";
+  position: absolute;
+  width: 90px;
+  height: 40px;
+  background: red;
+  color: white;
+  top: -5px;
+  text-align: center ;
+  line-height: 50px;
+  right: -34px;
+  transform: rotate(45deg);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
