@@ -495,6 +495,3 @@ document.getElementById("report").addEventListener("click", function(ev) {
 	download_report()
 });
 
-document.getElementById("dummy-test").addEventListener("click", function(ev) {
-	pbar.runTest("progress-bar")
-});
