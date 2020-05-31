@@ -66,6 +66,11 @@ input[type="button"] {
 	border-radius: 10px;
 	box-shadow: 0 0 .5rem rgba(0,0,0,.15) !important;
 }
+.table td, .table th {
+        font-size: 13px;
+    }
+	
+
 .table th {
 	text-align: left;
 	padding: 5px 15px;
@@ -74,12 +79,14 @@ input[type="button"] {
 	width: 50%;
 	background-color: white;
 	color:black;
-	padding: 5px 15px;
+	padding: 25px !important;
 }
 .table td:first-child {
 	border-radius: 10px 0 0 10px;
 	box-shadow: 0 0 .5rem rgba(0,0,0,.15) !important;
+	border-left: inset;
 	border-left-color: red;
+	border-left-width:10px;
 }
 .table td:last-child {
 	border-radius: 0 10px 10px 0;
