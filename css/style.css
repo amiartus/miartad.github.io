@@ -140,7 +140,7 @@ input[type="button"] {
   position: relative;
   overflow: hidden;
   width: 200px;
-  height: 100px;
+  height: 80px;
   
 }
 .sash tr td:last-child:after {
