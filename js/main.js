@@ -418,6 +418,54 @@ async function update_progress_ui()
 	document.getElementById("task-update").value = time.toDuration(runtime);
 }
 
+async function download_report() {
+	let start = new Date(document.getElementById("start").value);
+	start.setHours(0);
+	start.setMinutes(0);
+	start.setSeconds(0);
+
+	let end = new Date(document.getElementById("end").value);
+	end.setHours(23);
+	end.setMinutes(59);
+	end.setSeconds(59);
+
+	let results = await db_foreach(table_history, key_start, IDBKeyRange.bound(start.getTime(), end.getTime(), true, false));
+
+	let report = new Map()
+
+	results.forEach(element => {
+		let entry = report.get(element[key_name])
+		if (entry == undefined) {
+			entry = [
+				element[key_name],
+				element[key_description],
+				element[key_duration]
+			]
+		}
+		else {
+			entry[2] += element[key_duration]
+		}
+		report.set(element[key_name], entry)
+	})
+
+	let data = ""
+	report.forEach(element => {
+		if (element[0].includes(document.getElementById("task-catch").value)) {
+			element[0] = '=HYPERLINK("' + document.getElementById("task-url").value + '/' + element[0] + '","' + element[0] + '")'
+		}
+		// convert to number expected by excel time format
+		element[2] = element[2] / 86400000
+		data += element.join(';') + '\n'
+	})
+	data += "total;;" + "=SUM(C1:C" + report.size + ")"
+
+	let blob = new Blob([data], {type: 'text/plain'})
+	var a = document.createElement('a')
+	a.setAttribute('href', URL.createObjectURL(blob))
+	a.setAttribute('download', 'report.csv')
+	a.click()
+}
+
 document.getElementById("task-name").addEventListener("input", function(ev) {
 	update_task_ui(ev.target.value);
 });
@@ -441,6 +489,10 @@ document.getElementById("go-next").addEventListener("click", function(ev) {
 
 document.getElementById("go-date").addEventListener("click", function(ev) {
 	update_history_ui()
+});
+
+document.getElementById("report").addEventListener("click", function(ev) {
+	download_report()
 });
 
 document.getElementById("dummy-test").addEventListener("click", function(ev) {

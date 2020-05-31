@@ -25,13 +25,25 @@
 	<div class="pb" id="progress-bar"></div>
 	<input type="button" value="3 tasks test render" id="dummy-test" />
 
-	<button id="go-prev">prev</button>
-	<button id="go-date"/>
-	<button id="go-next">next</button>
+	<div class="container">
+		<button id="go-prev">prev</button>
+		<button id="go-date"/>
+		<button id="go-next">next</button>
+	</div>
 
 	<div class="container">
-            <table id="id-table-history"  class="table"></table>
-          
+		<table id="id-table-history"  class="table"></table>
+	</div>
+
+	<div class="container">
+		<input type="text" id="task-url" placeholder="Task url prefix">
+		<input type="text" id="task-catch" placeholder="Task catch string">
+	</div>
+
+	<div class="container">
+		<input type="date" id="start">
+		<button id="report" type="button">Download</button>
+		<input type="date" id="end">
 	</div>
 
 	<script type="module" src="js/main.js"></script>
